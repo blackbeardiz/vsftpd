@@ -1,0 +1,15 @@
+version: "3"
+services:
+  vsftpd:
+    container_name: vsftpd
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    #restart: always
+    ports:
+        - 0.0.0.0:20:20
+        - 0.0.0.0:21:21
+        - "21100-21110:21100-21110"
+    volumes:
+      - ./home:/var/FTP
+      - ./logs:/var/log
